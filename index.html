@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Helen</title> <!-- 标题改为：给 Helen -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #ffeef8;
+            --accent-color: #ff6b9d;
+            /* 温暖粉紫色主题 */
+            --bg-gradient: linear-gradient(135deg, #2d1b4e 0%, #4a2c5e 25%, #6b4c7a 50%, #4a2c5e 75%, #2d1b4e 100%);
+            --aurora-start: rgba(255, 107, 157, 0.25);
+            --aurora-mid: rgba(186, 85, 211, 0.15);
+            --aurora-end: rgba(221, 160, 221, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background: var(--bg-gradient);
+            font-family: 'Cormorant Garamond', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary-color);
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* 北极光效果 */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at top, var(--aurora-start) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, var(--aurora-mid) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 60%, var(--aurora-end) 0%, transparent 50%);
+            animation: aurora 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes aurora {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: translateY(0);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: translateY(-20px);
+            }
+        }
+
+        .snow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #b3e5fc;
+            font-size: 1em;
+            opacity: 0.9;
+            animation: fall linear infinite;
+            text-shadow: 0 0 5px rgba(129, 212, 250, 0.5);
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) translateX(0);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(110vh) translateX(20px);
+                opacity: 0.3;
+            }
+        }
+
+        .card {
+            position: relative;
+            z-index: 10;
+            background: rgba(26, 58, 82, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 2px solid rgba(77, 208, 225, 0.3);
+            border-radius: 20px;
+            padding: 50px 45px;
+            max-width: 520px;
+            width: 90%;
+            margin: 20px auto;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(77, 208, 225, 0.1),
+                inset 0 0 60px rgba(77, 208, 225, 0.05);
+            animation: fadeIn 2s ease-out, cardGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes cardGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                    0 0 40px rgba(77, 208, 225, 0.1),
+                    inset 0 0 60px rgba(77, 208, 225, 0.05);
+            }
+
+            50% {
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                    0 0 60px rgba(77, 208, 225, 0.2),
+                    inset 0 0 80px rgba(77, 208, 225, 0.08);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0 0 15px 0;
+            color: var(--accent-color);
+            font-weight: 600;
+            line-height: 1.3;
+            text-shadow: 0 0 20px rgba(77, 208, 225, 0.6),
+                0 0 40px rgba(77, 208, 225, 0.3);
+            animation: titleShine 3s ease-in-out infinite;
+        }
+
+        @keyframes titleShine {
+
+            0%,
+            100% {
+                text-shadow: 0 0 20px rgba(77, 208, 225, 0.6),
+                    0 0 40px rgba(77, 208, 225, 0.3);
+            }
+
+            50% {
+                text-shadow: 0 0 30px rgba(77, 208, 225, 0.8),
+                    0 0 60px rgba(77, 208, 225, 0.4),
+                    0 0 80px rgba(129, 212, 250, 0.2);
+            }
+        }
+
+        .subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.9;
+            margin-bottom: 35px;
+            color: #81d4fa;
+            text-shadow: 0 0 10px rgba(129, 212, 250, 0.4);
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .philosophy-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #80deea;
+            margin: 15px 0;
+            display: block;
+            text-shadow: 0 0 15px rgba(128, 222, 234, 0.4);
+            font-weight: 600;
+        }
+
+        .sincere-block {
+            font-size: 1.1rem;
+            margin-top: 40px;
+            background: rgba(13, 39, 61, 0.6);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: left;
+            border-left: 3px solid var(--accent-color);
+            border-right: 1px solid rgba(77, 208, 225, 0.2);
+            line-height: 1.7;
+            box-shadow: inset 0 0 30px rgba(77, 208, 225, 0.05);
+        }
+
+        .sincere-block strong {
+            color: #80deea;
+            text-shadow: 0 0 8px rgba(128, 222, 234, 0.3);
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            text-align: right;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            .card {
+                padding: 35px 25px;
+            }
+
+            p {
+                font-size: 1.15rem;
+            }
+
+            .philosophy-quote {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Music -->
+    <audio id="firstMusic">
+        <source src="blessing.m4a" type="audio/mp4">
+    </audio>
+    <audio id="bgMusic" loop>
+        <source src="videoplayback.mp4" type="audio/mp4">
+    </audio>
+
+    <!-- Music Control Button -->
+    <button id="musicToggle" style="
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 100;
+        background: rgba(77, 208, 225, 0.2);
+        border: 2px solid rgba(77, 208, 225, 0.5);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        font-size: 20px;
+        color: #4dd0e1;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(77, 208, 225, 0.3);
+    " onmouseover="this.style.background='rgba(77, 208, 225, 0.3)'"
+        onmouseout="this.style.background='rgba(77, 208, 225, 0.2)'">
+        🔊
+    </button>
+
+    <div class="snow-container" id="snow"></div>
+
+    <div class="card">
+        <!-- 1. 专门加上她的名字 -->
+        <h1>С Новым Годом,<br>Helen!</h1>
+        <div class="subtitle">Happy New Year, Helen</div>
+
+        <!-- 2. 鼓励学习：语言专业祝福 -->
+        <p>
+            Желаю тебе успехов в изучении языков!
+            <span class="philosophy-quote">Пусть каждое слово открывает новый мир</span>
+            Верю, что ты справишься со всеми экзаменами!
+        </p>
+        <!-- 
+        中文意思：
+        祝你在语言学习上取得成功！
+        愿每个词汇都为你打开一个新世界
+        相信你能顺利通过所有考试！
+        -->
+
+        <!-- 3. 新年祝福与考试祝福 -->
+        <div class="sincere-block">
+            Пусть новый год принесёт тебе много <strong>радости</strong> и <strong>счастья</strong>!
+            <br><br>
+            Желаю тебе лёгких экзаменов и отличных оценок. Пусть всё получится!
+        </div>
+        <!-- 
+        中文意思：
+        愿新年给你带来许多快乐和幸福！
+        祝你考试顺利，成绩优异。愿一切顺利！
+        -->
+
+        <div class="signature">
+            С наилучшими пожеланиями,<br> <!-- 致以最美好的祝愿 -->
+            Сюй Голи<br>
+            <small style="opacity: 0.7; font-size: 0.85rem;">Новосибирск, декабрь 2025</small>
+        </div>
+    </div>
+
+    <script>
+        function createSnow() {
+            const container = document.getElementById('snow');
+            const snowflakeCount = 50; // 增加雪花数量，更符合西伯利亚冬季
+            for (let i = 0; i < snowflakeCount; i++) {
+                const flake = document.createElement('div');
+                flake.className = 'snowflake';
+                flake.innerHTML = '❄';
+                flake.style.left = Math.random() * 100 + 'vw';
+                flake.style.animationDuration = (Math.random() * 6 + 4) + 's';
+                flake.style.opacity = Math.random() * 0.6 + 0.4;
+                flake.style.fontSize = (Math.random() * 14 + 12) + 'px';
+                flake.style.animationDelay = Math.random() * 6 + 's';
+                container.appendChild(flake);
+            }
+        }
+        createSnow();
+
+        // Background Music Control - Sequential Playback
+        const firstMusic = document.getElementById('firstMusic');
+        const music = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+        let isFirstMusicPlaying = true;
+
+        // When first music ends, play the second music
+        firstMusic.addEventListener('ended', function () {
+            isFirstMusicPlaying = false;
+            music.play().catch(e => console.log('Second music play prevented:', e));
+        });
+
+        musicToggle.addEventListener('click', function () {
+            if (isPlaying) {
+                if (isFirstMusicPlaying) {
+                    firstMusic.pause();
+                } else {
+                    music.pause();
+                }
+                musicToggle.textContent = '🔇';
+                isPlaying = false;
+            } else {
+                if (isFirstMusicPlaying) {
+                    firstMusic.play().catch(e => console.log('Autoplay prevented:', e));
+                } else {
+                    music.play().catch(e => console.log('Autoplay prevented:', e));
+                }
+                musicToggle.textContent = '🔊';
+                isPlaying = true;
+            }
+        });
+
+        // Try to autoplay on page load with 10s delay (may be blocked by browser)
+        window.addEventListener('load', function () {
+            firstMusic.volume = 0.3; // Set volume to 30%
+            music.volume = 0.3; // Set volume to 30%
+
+            // Delay 10 seconds before playing first music
+            setTimeout(function () {
+                firstMusic.play().then(() => {
+                    isPlaying = true;
+                    musicToggle.textContent = '🔊';
+                }).catch(e => {
+                    console.log('Autoplay blocked. Click the button to play music.');
+                    musicToggle.textContent = '🔇';
+                    // Add a pulsing animation to draw attention
+                    musicToggle.style.animation = 'pulse 2s ease-in-out infinite';
+                });
+            }, 6000); // 10 seconds delay
+        });
+
+        // Add pulse animation for the button
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { 
+                    transform: scale(1);
+                    box-shadow: 0 4px 15px rgba(77, 208, 225, 0.3);
+                }
+                50% { 
+                    transform: scale(1.1);
+                    box-shadow: 0 6px 20px rgba(77, 208, 225, 0.5);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
